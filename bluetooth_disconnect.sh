@@ -3,6 +3,7 @@
 BLUETOOTH_DEVICE="46:AE:59:A8:AF:B8"  # Bluetooth device MAC address
 STATE_FILE="$(dirname "$0")/disconnect_bt8.state"
 LOG_FILE="$(dirname "$0")/disconnect_bt8.log"
+NUMBER=30  # number of consequent periods
 
 # Function to read the minutes without sound from the state file
 read_minutes_without_sound() {
@@ -55,6 +56,7 @@ main() {
     log_message "Checking if the Bluetooth device is connected..."
     # Check if the Bluetooth device is connected
     if ! is_device_connected; then
+        echo "" > "$LOG_FILE"  # Clear log file
         log_message "Bluetooth device is not connected. Resetting minutes without sound and stopping the script."
         # Reset minutes_without_sound and stop the script if the device is not connected
         write_minutes_without_sound 0
@@ -91,9 +93,9 @@ main() {
         log_message "Sound detected. Resetting minutes without sound."
     fi
 
-    # Check if there have been 30 or more consecutive minutes without sound
-    if [ "$minutes_without_sound" -ge 30 ]; then
-        log_message "30 or more consecutive minutes without sound detected. Disconnecting the Bluetooth device."
+    # Check if there have been #Number or more consecutive minutes without sound
+    if [ "$minutes_without_sound" -ge $NUMBER ]; then
+        log_message "$NUMBER or more consecutive minutes without sound detected. Disconnecting the Bluetooth device."
         bluetoothctl disconnect $BLUETOOTH_DEVICE  # Disconnect the Bluetooth device
         minutes_without_sound=0
         write_minutes_without_sound "$minutes_without_sound"
