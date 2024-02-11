@@ -42,7 +42,7 @@ To use this script effectively, follow these steps:
 
 1. Ensure that the script is executable. If not, make it executable using the command:
    ```bash
-   chmod +x disconnect_bt8.sh
+   chmod +x bluetooth_disconnect.sh
    ```
 
 2. Configure cron to execute the script at regular intervals. Add the following line to your crontab file (`crontab -e`):
