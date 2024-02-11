@@ -48,7 +48,7 @@ To use this script effectively, follow these steps:
 2. Configure cron to execute the script at regular intervals. Add the following line to your crontab file (`crontab -e`):
    ```cron
    XDG_RUNTIME_DIR=/run/user/1000
-   * * * * * /full_path_to_the_script/disconnect_bt8.sh
+   * * * * * /full_path_to_the_script/bluetooth_disconnect.sh
    ```
 
 3. Ensure that the `XDG_RUNTIME_DIR` environment variable is set correctly. It is typically set to `/run/user/1000`, where `1000` represents the user's UID (User Identifier). This directory is used for storing user-specific runtime files.
