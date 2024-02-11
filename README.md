@@ -34,6 +34,7 @@ You can configure the behavior of the script by editing the variables at the beg
 - `STATE_FILE`: Path to the file storing the minutes without sound.
 - `BLUETOOTH_DEVICE`: MAC address of the Bluetooth audio device `bluetoothctl info | grep Device`
 - `LOG_FILE`: Path to the log file.
+- `NUMBER`: Number of consequant periods without sound
 
 
 ## Usage
